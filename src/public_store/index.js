@@ -4,12 +4,13 @@ export const initialState = {
   user: undefined,
   products: [],
   redeemHistory: [],
-  token: undefined,
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGRkYjk4OWIwMWI5ZDAwNmM1MjllNDgiLCJpYXQiOjE1NzQ4MTIwNDF9.O3prCG46keu0x758k1o0jDJBTnGekOB_dH_1oufZQRQ',
   currentPage: 0
 }
 
 export const reducer = (state, action) => {
   let newstate = {}
+
   switch (action.type) {
     case STORE_CASES.RESET:
       newstate = initialState

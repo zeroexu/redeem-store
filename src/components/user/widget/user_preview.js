@@ -1,17 +1,26 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { Context } from '../../../public_store/index'
 import coinSrc from '../../../assets/icons/coin.svg'
+const { getUserInfo } = require('../../../utils/index')
 const validUserData = (user) => {
-  return user && user.name && user.points
+  return (user !== undefined && user.name !== undefined)
 }
 
 const UserPreview = ({ user = {} }) => {
-  if (!validUserData(user)) {
+  const { store, dispatch } = useContext(Context)
+  const [isRequesting, setIsRequesting] = useState(false)
+
+  if (!validUserData(store.user)) {
+    if (!isRequesting) {
+      setIsRequesting(true)
+      getUserInfo(dispatch, store.token)
+    }
     return <div className='user-preview'>
-      <div className='user-name'><h3>Sin Usuario sin autorizacion</h3></div>
+      <div className='user-name'><h3>...Loading...</h3></div>
     </div>
   }
 
-  const { name, points } = user
+  const { name, points } = store.user
   return <div className='user-preview'>
     <div className='user-name'>
       <h3>{name}</h3>

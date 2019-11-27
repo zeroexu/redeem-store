@@ -7,17 +7,20 @@ const { getProducts } = require('../../../utils/index')
 const Productlist = () => {
   const { store, dispatch } = useContext(Context)
   const [isRequesting, setIsRequesting] = useState(false)
-  const products = []
+  const products = (!store.products) ? [] : store.products
+
   if (store.token && store.products.length === 0 && isRequesting === false) {
     setIsRequesting(true)
     getProducts(dispatch, store.token)
   }
+  return <div id="products-container">
+    {
+      products.map((product, index) => {
+        return <ProductCell product={product} key={index} />
+      })
+    }
+  </div>
 
-  return products.map((product, index) => {
-    return <li key={index}>
-      <ProductCell product={product} />
-    </li>
-  })
 }
 
 export default Productlist

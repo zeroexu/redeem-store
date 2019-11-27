@@ -4,19 +4,18 @@ const { API, METHODS, STORE_CASES } = require('./constants')
 
 const request = (url, token, method, data = {}) => {
 
-  var config = {
-    headers: { 'Authorization': "bearer " + token }
-  }
+
+  axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` }
 
   if (method === METHODS.GET) {
-    return axios.get(url, data, config)
+    return axios.get(API.SERVER + url, data)
   } else {
-    return axios.post(url, data, config)
+    return axios.post(API.SERVER + url, data)
   }
 
 }
 const getUserInfo = async (dispatch, token) => {
-  const userDataResponse = request(API.GET.USER.URL, token, METHODS.GET)
+  const userDataResponse = await request(API.GET.USER.URL, token, METHODS.GET)
   return dispatch({
     type: STORE_CASES.SET_USER_DATA,
     response: userDataResponse
@@ -24,21 +23,21 @@ const getUserInfo = async (dispatch, token) => {
 }
 
 const getProducts = async (dispatch, token) => {
-  const productsResponse = request(API.GET.PRODUCTS.URL, token, METHODS.GET)
+  const productsResponse = await request(API.GET.PRODUCTS.URL, token, METHODS.GET)
   return dispatch({
-    type: STORE_CASES.SET_USER_DATA,
+    type: STORE_CASES.SET_PRODUCT_DATA,
     response: productsResponse
   })
 }
 
 const getHistory = async (dispatch, token) => {
-  const historyResponse = request(API.GET.REDEEM_HISTORY.URL, token, METHODS.GET)
+  const historyResponse = await request(API.GET.REDEEM_HISTORY.URL, token, METHODS.GET)
   return dispatch({
     type: STORE_CASES.SET_USER_DATA,
     response: historyResponse
   })
 }
 
-module.export = {
+export {
   getUserInfo, getProducts, getHistory
 }
