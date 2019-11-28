@@ -2,15 +2,14 @@ import React, { useState } from 'react'
 import RemainIndicator from './remain_indicator'
 import InnerModalCard from './inner_modal_card'
 import ProductCard from './product_card'
-const { hasEnoughPoints, remainPoints } = require('../../lib/product_cell')
+import { isRedemableProduct, remainPoints } from '../../lib/product'
 const myPoints = 0
 
-
-const ProductCell = ({ product }) => {
+const ProductCell = ({ product, userPoints }) => {
   const [isHover, setIsHover] = useState(false)
   const { cost, id, points, name, img, category } = product
-  const isShopable = hasEnoughPoints(myPoints, points)
-  const remain = remainPoints(myPoints, points)
+  const isShopable = isRedemableProduct(myPoints, points)
+  const remain = remainPoints(myPoints, points) * -1
 
   return <div className='product-cell' onMouseOver={() => { setIsHover(true) }} onMouseOut={() => { setIsHover(false) }}>
     {isShopable &&
@@ -21,8 +20,8 @@ const ProductCell = ({ product }) => {
       <RemainIndicator price={remain} />
     }
 
-    <ProductCard price={cost} srcProduct={img.url} name={name} category={category} />
-    <InnerModalCard price={cost} id={id} show={isHover} />
+    <ProductCard price={cost} srcProduct={img.url} name={name} category={category} userPoints={userPoints} />
+    <InnerModalCard price={cost} id={id} show={isHover && isRedemableProduct(userPoints, cost)} userPoints={userPoints} />
 
   </div >
 }

@@ -2,8 +2,6 @@ import React from 'react'
 import srcCoin from '../../../../assets/icons/coin.svg'
 import srcBuyWhite from '../../../../assets/icons/buy-white.svg'
 
-
-
 const InnerModalCard = ({ price, id, show }) => {
   if (!show) {
     return <div style={{ display: 'none' }}></div>

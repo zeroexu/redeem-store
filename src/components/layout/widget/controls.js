@@ -4,9 +4,9 @@ import Sorter from './sorter'
 import NavigatorPage from './navigator_page'
 
 
-const Controls = ({ isFooter = false }) => {
+const Controls = ({ isFooter = false, currentPage }) => {
   return <div id='controls'>
-    <CounterItems />
+    <CounterItems currentPage={currentPage} />
     <div>
       {!isFooter &&
         <Sorter />

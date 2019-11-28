@@ -6,8 +6,8 @@ import './App.scss'
 function App() {
   return <BrowserRouter>
     <Switch>
-      <Route path='/' component={Index} />
-      <Route path='/page/:index' component={Index} />
+      <Route path={'/page/:currentPage'} component={Index} />
+      <Route path={'/'} component={Index} />
     </Switch>
   </BrowserRouter>
 }

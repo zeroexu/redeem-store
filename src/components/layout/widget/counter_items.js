@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Context } from '../../../public_store/index'
+import { getNumberPages } from '../lib/sorters'
 
-const CounterItems = ({ index = 0, offset = 0 }) => {
-  return <div id='counter-list'>{index} of {offset}</div>
+const CounterItems = ({ currentPage = 0 }) => {
+  const { store } = useContext(Context)
+  let offset = getNumberPages(store.products.length)
+  return <div id='counter-list'>{currentPage} of {offset}</div>
 }
 
 export default CounterItems

@@ -38,6 +38,8 @@ const getHistory = async (dispatch, token) => {
   })
 }
 
+
+
 export {
   getUserInfo, getProducts, getHistory
 }

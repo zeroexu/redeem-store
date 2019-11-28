@@ -1,6 +1,7 @@
 $background_light:#ffffff;
 $background_dark:#F8F8F8;
 $background_toast: #EAEAEA;
+$background_toast_dark: rgba(0,0,0,0.8);
 $background_primary: #0ad4fa;
 
 $background_primary_transparent: rgba(10,212,250,0.8);
@@ -14,7 +15,7 @@ $size_h2:36px;
 $size_h3:24px;
 $size_h4:18px;
 $size_h5:16px;
-
+$size_h6:14px;
 
 body{
   margin: 0px;
@@ -44,6 +45,11 @@ body{
     font-weight:300;
   }
   h5{
+    margin: 0px;
+    font-size: $size_h5;
+    font-weight:300;
+  }
+  h6{
     margin: 0px;
     font-size: $size_h5;
     font-weight:300;
@@ -187,18 +193,14 @@ body{
           .product-cell{
             list-style-type: none;
             margin-bottom:276px;
-
             .inner-modal-menu{
               height: 100%;
               width: 276px;
               height: 276px;
               background-color: $background_primary_transparent;
-             
               position: absolute;
               z-index: 2;
-
               .buy-container{
-
                 button.buy-floater{
                   width: 47px;
                   height: 47px;
@@ -240,6 +242,10 @@ body{
               box-shadow:2px 2px 4px 0 rgba(0,0,0,0.10);
               position: absolute;
               z-index: 1;
+
+              &:hover{
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+              }
               .buy-container{
                 button.buy-floater{
                   width: 47px;
@@ -258,6 +264,30 @@ body{
                 z-index: -1;
               }
               
+              .remaining-points{
+                button{
+                  margin-top: 5px;
+                  margin-right: 5px;;
+                  float:right;
+                  line-height:32px;
+                  border-radius: 50px;
+                  background-color: $background_toast_dark;
+                  border-radius: 100px;
+                  padding-left: 10px;
+                  padding-right: 10px;
+                  h6{
+                    float: right;
+                    color: $color_primary;
+                  }
+                  img{
+                    margin-top: 4px;
+                    margin-left: 4px;;                    float:right;
+                    width: 26px;
+                    height: 26px;
+                  }
+                }
+                
+              }
               .data-container{
                 border-top: 1px solid $color_toast;
                 position: absolute;
@@ -268,6 +298,8 @@ body{
               }
             }
           }
+
+          
         }
       }
       

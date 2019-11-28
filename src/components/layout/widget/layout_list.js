@@ -3,16 +3,16 @@ import Header from './header'
 import Banner from './banner'
 import Controls from './controls'
 
-const LayoutList = ({ children }) => {
+const LayoutList = ({ children, currentPage }) => {
   return <div className='app'>
     <div></div>
     <div id='main-container'>
       <Header />
       <Banner />
       <div id='internal-list' >
-        <Controls />
+        <Controls currentPage={currentPage} />
         {children}
-        <Controls isFooter={true} />
+        <Controls currentPage={currentPage} isFooter={true} />
       </div>
     </div>
     <div></div>

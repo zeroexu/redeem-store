@@ -3,7 +3,7 @@ module.exports = {
 
   },
   SETTINGS: {
-    MAX_ITEMS_BY_PAGE: 32
+    MAX_ITEMS_BY_PAGE: 10
   },
   METHODS: {
     GET: 'GET',
@@ -13,7 +13,13 @@ module.exports = {
     RESET: 'reset',
     SET_USER_DATA: 'set_user_data',
     SET_PRODUCT_DATA: 'set_product_data',
-    SET_HISTORY_DATA: 'set_history_data'
+    SET_HISTORY_DATA: 'set_history_data',
+    SET_SORT: 'set_current_sort'
+  },
+  SORTS: {
+    ASC: 'asc',
+    DESC: 'desc',
+    RECENT: 'recent'
   },
   API: {
     SERVER: 'https://coding-challenge-api.aerolab.co/',
