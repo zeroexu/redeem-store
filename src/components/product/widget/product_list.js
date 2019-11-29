@@ -16,8 +16,9 @@ const Productlist = ({ currentPage }) => {
     setIsRequesting(true)
     getProducts(dispatch, store.token)
   }
-
-
+  if (store.token && store.products.length > 0 && isRequesting === true) {
+    setIsRequesting(false)
+  }
   return <div id="products-container">
     {
       subProducts.map((product, index) => {

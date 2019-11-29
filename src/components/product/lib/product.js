@@ -10,11 +10,13 @@ const remainPoints = (userPoints = 0, productPoints = 0) => {
 }
 
 const getSubSegment = (currentPage, products) => {
-  const begin = (currentPage - 1) * SETTINGS.MAX_ITEMS_BY_PAGE
+  const begin = (currentPage === 0) ? 0 : (currentPage - 1) * SETTINGS.MAX_ITEMS_BY_PAGE
   const end = (begin + SETTINGS.MAX_ITEMS_BY_PAGE > products.length) ? products.length : begin + SETTINGS.MAX_ITEMS_BY_PAGE
   const pageProducts = []
   for (let i = begin; i < end; i++) {
-    pageProducts.push(products[i])
+    if (products[i]) {
+      pageProducts.push(products[i])
+    }
   }
   return pageProducts
 }

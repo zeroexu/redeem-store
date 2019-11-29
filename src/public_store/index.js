@@ -39,7 +39,8 @@ export const reducer = (state, action) => {
     case STORE_CASES.SET_SORT:
       if (action.response) {
         newstate = {
-          currentSorting: action.response
+          currentSorting: action.response,
+          //products: [] Igualar a Cero para Obligar un Request en Limpio
         }
       }
       break
