@@ -7,7 +7,7 @@ const Index = ({ match }) => {
   const [store, dispatch] = useReducer(reducer, initialState)
 
   const { params } = match
-  const currentPage = (params.currentPage) ? params.currentPage : 0
+  const currentPage = (params.currentPage) ? parseInt(params.currentPage) : 0
 
   return <Context.Provider value={{ store, dispatch }}>
     <LayoutList currentPage={currentPage}>

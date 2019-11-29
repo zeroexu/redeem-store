@@ -12,7 +12,7 @@ const Controls = ({ isFooter = false, currentPage }) => {
         <Sorter />
       }
     </div>
-    <NavigatorPage />
+    <NavigatorPage currentPage={currentPage} />
   </div>
 }
 

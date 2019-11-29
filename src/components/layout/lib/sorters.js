@@ -16,8 +16,45 @@ const getNumberPages = (productsSize) => {
   return offset
 }
 
+const getPrevPage = (currentPage = 0) => {
+  const prevPage = currentPage - 1
+  if (prevPage < 0) {
+    return 0
+  } else {
+    return prevPage
+  }
+}
 
+
+const getNextpage = (currentPage = 0, productsSize = 0) => {
+  const nextPage = currentPage + 1
+  const numberOfPages = getNumberPages(productsSize)
+  if (nextPage > numberOfPages) {
+    return numberOfPages
+  } else {
+    return nextPage
+  }
+}
+
+const showPrevButton = (currentPage = 0) => {
+  const prevPage = currentPage - 1
+  if (prevPage <= 0) {
+    return false
+  } else {
+    return true
+  }
+}
+
+const showNextButton = (currentPage, productsSize) => {
+  const numberOfPages = getNumberPages(productsSize)
+  const nextPage = currentPage + 1
+  if (nextPage > numberOfPages) {
+    return false
+  } else {
+    return true
+  }
+}
 
 export {
-  setCurrentSort, getNumberPages
+  setCurrentSort, getNumberPages, getPrevPage, getNextpage, showNextButton, showPrevButton
 }
