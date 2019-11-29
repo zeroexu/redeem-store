@@ -4,7 +4,7 @@ const { API, METHODS, STORE_CASES } = require('./constants')
 
 const request = (url, token, method, data = {}) => {
 
-
+  console.log(method)
   axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` }
 
   if (method === METHODS.GET) {
@@ -38,8 +38,24 @@ const getHistory = async (dispatch, token) => {
   })
 }
 
+const buyProduct = async (dispatch, token, productId) => {
+  await request(API.POST.ADD_REDEEM.URL, token, METHODS.POST, { productId: productId })
+  const userDataResponse = await request(API.GET.USER.URL, token, METHODS.GET)
+  return dispatch({
+    type: STORE_CASES.SET_USER_DATA,
+    response: userDataResponse
+  })
+}
 
+const addPoints = async (dispatch, token) => {
+  await request(API.POST.ADD_POINTS.URL, token, METHODS.POST, { amount: 1000 })
+  const userDataResponse = await request(API.GET.USER.URL, token, METHODS.GET)
+  return dispatch({
+    type: STORE_CASES.SET_USER_DATA,
+    response: userDataResponse
+  })
+}
 
 export {
-  getUserInfo, getProducts, getHistory
+  getUserInfo, getProducts, getHistory, buyProduct, addPoints
 }

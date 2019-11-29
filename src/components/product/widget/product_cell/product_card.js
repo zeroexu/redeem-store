@@ -21,20 +21,22 @@ const ProductCard = ({ srcProduct, category = '', name = '', userPoints = 0, pri
 
 const checkIfIsRedeemable = (userPoints = 0, price = 0) => {
   const isRedemable = isRedemableProduct(userPoints, price)
+
   if (isRedemable) {
     return <div className={'buy-container '}>
       <button className='buy-floater'>
         <img src={srcBuyBlue} alt='buy button' />
       </button>
     </div>
-  } else {
-    return <div className='remaining-points'>
-      <button>
-        <img src={srcCoin} alt='coin' />
-        <h6>You need {-1 * remainPoints(userPoints, price)}</h6>
-      </button>
-    </div>
   }
+
+  return <div className='remaining-points'>
+    <button>
+      <img src={srcCoin} alt='coin' />
+      <h6>You need {-1 * remainPoints(userPoints, price)}</h6>
+    </button>
+  </div>
+
 }
 
 export default ProductCard

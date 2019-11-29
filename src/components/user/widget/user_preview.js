@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Context } from '../../../public_store/index'
+import { addPoints } from '../../../utils/index'
 import coinSrc from '../../../assets/icons/coin.svg'
 const { getUserInfo } = require('../../../utils/index')
 const validUserData = (user) => {
@@ -20,9 +21,13 @@ const UserPreview = ({ user = {} }) => {
     </div>
   }
 
+  const pointIncreaser = () => {
+    addPoints(dispatch, store.token)
+  }
   const { name, points } = store.user
   return <div className='user-preview'>
     <div className='user-name'>
+      <button className='increase-button' onClick={pointIncreaser}>+</button>
       <h3>{name}</h3>
     </div>
     <div className='user-points'>

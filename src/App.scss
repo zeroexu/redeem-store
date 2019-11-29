@@ -68,6 +68,7 @@ body{
       outline:0;
     }
   }
+  
   .app{
     margin: 16px 0;
 
@@ -102,6 +103,12 @@ body{
           .user-name{
             line-height:48px;
             text-align: right;
+            button{
+              float: left;
+              border: 0.5px solid $color_toast;
+              line-height: 40px;
+              background-color: $color_toast;
+            }
             h3{
               text-overflow: ellipsis;
               overflow: hidden;
@@ -199,7 +206,7 @@ body{
               height: 276px;
               background-color: $background_primary_transparent;
               position: absolute;
-              z-index: 2;
+              z-index: 3;
               
               .buy-container{
                 button.buy-floater{
@@ -229,8 +236,12 @@ body{
               .redeem-button{
                 display: flex;
                 justify-content: center;
-                button{
+               
+                button{ 
+                  cursor: pointer;
+                  z-index: 1;
                   margin-left:0px;
+                  
                 }
               }
             }
@@ -343,5 +354,16 @@ body{
     100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
 
+  .ReactModalPortal,.ReactModal__Overlay, .ReactModal__Overlay--after-open{
+    z-index:9999 !important;
+    .yes-button{
+      background-color: $background_primary;
+      float:left;
+    }
+    .yes-button{
+      background-color: $background_primary;
+      float:right;
+    }
+  }
   
 }

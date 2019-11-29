@@ -7,11 +7,11 @@ const myPoints = 0
 
 const ProductCell = ({ product, userPoints }) => {
   const [isHover, setIsHover] = useState(false)
-  const { cost, id, points, name, img, category } = product
+  const { cost, _id, points, name, img, category } = product
   const isShopable = isRedemableProduct(myPoints, points)
   const remain = remainPoints(myPoints, points) * -1
 
-  return <div className='product-cell' onMouseOver={() => { setIsHover(true) }} onMouseOut={() => { setIsHover(false) }}>
+  return <div className='product-cell' onMouseOver={() => { setIsHover(true) }} >
     {isShopable &&
       <div className='shoppable-bag' ></div>
     }
@@ -21,7 +21,7 @@ const ProductCell = ({ product, userPoints }) => {
     }
 
     <ProductCard price={cost} srcProduct={img.url} name={name} category={category} userPoints={userPoints} />
-    <InnerModalCard price={cost} id={id} show={isHover && isRedemableProduct(userPoints, cost)} userPoints={userPoints} />
+    <InnerModalCard price={cost} id={_id} show={isHover && isRedemableProduct(userPoints, cost)} userPoints={userPoints} onMouseOut={() => { setIsHover(false) }} />
 
   </div >
 }
